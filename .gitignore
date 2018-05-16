@@ -102,6 +102,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+<<<<<<< HEAD
 
 # Raw data
 raw/
+=======
+>>>>>>> fae44ae831b25ae0556856b7f0212480b64f1562
