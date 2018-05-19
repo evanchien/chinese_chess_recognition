@@ -12,7 +12,7 @@ import glob
 
 
 
-def data_gen(source, dest, tra, val, prefix, size):
+def data_gen(source, dest, tra, val, prefix, size, batch):
     '''
         source: The source of the image wish to generate
         dest:   The destination of the output images. There will be two subfolders, train/valid, with images count ratio around 7:3
@@ -26,22 +26,29 @@ def data_gen(source, dest, tra, val, prefix, size):
     rescale_ratio = 1.0/255
     shift_range = 0.2
     fill = 'wrap'
-    zoom_l = 0.8
-    zoom_h = 1.2
+    zoom_l = 0.5
+    zoom_h = 1
     shear = 0.2
     rot = 30
     split = 0.3
     datagen = image.ImageDataGenerator(rescale= rescale_ratio, width_shift_range = shift_range, height_shift_range = shift_range, fill_mode=fill, zoom_range=[zoom_l, zoom_h], shear_range=shear, rotation_range=rot, validation_split = split)
 
-    gen_data_train = datagen.flow_from_directory(source, batch_size=1,shuffle=True,save_to_dir=dest + '/train',save_prefix=prefix,target_size=(size, size),class_mode = 'categorical', subset = 'training')
-    for i in range(tra):
-        gen_data_train.next()
-    gen_data_valid = datagen.flow_from_directory(source, batch_size=1,shuffle=True,save_to_dir=dest + '/valid',save_prefix=prefix,target_size=(size, size),class_mode = 'categorical', subset = 'validation')
-    for i in range(val):
-        gen_data_valid.next()
+    gen_data_train = datagen.flow_from_directory(source, batch_size=batch, shuffle=True,save_to_dir=dest + '/train',save_prefix=prefix,target_size=(size, size),class_mode = 'categorical', subset = 'training')
+    # for i in range(tra):
+    #     x, y = gen_data_train.next()
+    # print(gen_data_train.filename)
+    # print(len(gen_data_train.classes))
+
+    gen_data_valid = datagen.flow_from_directory(source, batch_size=batch,shuffle=True,save_to_dir=dest + '/valid',save_prefix=prefix,target_size=(size, size),class_mode = 'categorical', subset = 'validation')
+    # for i in range(val):
+    #     gen_data_valid.next()
+
+
+    # print(gen_data_train.classes)
+    # label_map = (gen_data_train.class_indices)
+    # print(label_map)
     return gen_data_train, gen_data_valid
 
-# def train_val(source, ratio):
 
 if __name__ == '__main__':
     source = '/home/evan/Dropbox/EECS_349_Machine_Learning/Homework/Final/Data'
@@ -49,6 +56,7 @@ if __name__ == '__main__':
     tra = 10
     val = 10
     prefix = 'test'
-    size = 32
-    label = ['black_che', 'black_jiang', 'black_ma', 'black_pao', 'black_shi', 'black_tsu', 'black_xiang', 'red_bing', 'red_che', 'red_ma', 'red_pao', 'red_shi', 'red_swai', 'red_xiang']
-    data_gen(source, dest, tra, val, prefix, size)
+    size = 30
+    batch = 500
+    label = ['black_jiang', 'black_ju', 'black_ma', 'black_pao', 'black_shi', 'black_xiang', 'black_zu', 'red_bing', 'red_ju', 'red_ma', 'red_pao', 'red_shi', 'red_shuai', 'red_xiang']
+    data_gen(source, dest, tra, val, prefix, size, batch)
