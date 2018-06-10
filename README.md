@@ -13,7 +13,8 @@ We chose Keras + TensoeFlow to build up our CNN model. The moddel has 3 layers o
 
 The Chinese chess has black and red chess pieces holding by two players. Each one has 7 different kind of chess.Thus, there are 14 classes in out dataset.  
 
-The data classes in order are: 
+The data classes in order are:  
+
 <img src="img/b_jiang.png" alt="drawing" width="100px"/><img src="img/b_ju.png" alt="drawing" width="100px"/><img src="img/b_ma.png" alt="drawing" width="100px"/><img src="img/b_pao.png" alt="drawing" width="100px"/><img src="img/b_shi.png" alt="drawing" width="100px"/><img src="img/b_xiang.png" alt="drawing" width="100px"/><img src="img/b_zu.png" alt="drawing" width="100px"/><img src="img/r_ju.png" alt="drawing" width="100px"/><img src="img/r_ma.png" alt="drawing" width="100px"/><img src="img/r_pao.png" alt="drawing" width="100px"/><img src="img/r_shi.png" alt="drawing" width="100px"/><img src="img/r_shuai.png" alt="drawing" width="100px"/><img src="img/r_xiang.png" alt="drawing" width="100px"/>
 
 
@@ -36,9 +37,9 @@ The model used in the test below is `toy_cnn_mini_model_baseline.h5`. Below are 
 
 As you can see in the links below, despite we have strong confidence in training/validation, our classifier still has some problem with class `b_ma`, `b_xiang`, `'b_pao` and `b_shi`.
 
-{% include image.html url="https://youtu.be/2Fv16iSG5F4" image="img/setup.png" %}  
+[Video 1](https://youtu.be/2Fv16iSG5F4) 
+[Video 2](https://youtu.be/BOO4li_PxPQ)
 
-{% include image.html url="https://youtu.be/BOO4li_PxPQ" image="img/setup.png" %}
 
 ## <span style="color:blue">Analysis</span>  
 ### <span style="text-decoration:underline">Learning rate</span>
