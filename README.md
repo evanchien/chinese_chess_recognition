@@ -97,8 +97,8 @@ From left to right and from top to down are in the order of this list:
 We can see that `r_ju` and `r_xiang` are with lower precision and the red ones (classes starting with r_) have lower precision comparing with the black.
 
 ## <span style="color:blue">Future Works</span>
-### <span style="text-decoration:underline">Model Review</span>
-In our tests, we see mis-classifications on some of the black chess pieces and the red ones performs much better. This contridicts the classification report and we will find out whether it is the camera or other factors affecting the accuracy.
+### <span style="text-decoration:underline">Influential factors</span>
+In our tests, we see mis-classifications on some of the black chess pieces and the red ones performs much better. This contradicts the classification report and we will find out whether it is the camera or other factors affecting the accuracy.
 ### <span style="text-decoration:underline">Optimization</span>
 As mentioned in the status update, we are still working on the bottlenecks from pretrained VGG16 CNNarchitecture and will keep updating.
 
