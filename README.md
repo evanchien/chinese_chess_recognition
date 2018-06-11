@@ -37,7 +37,7 @@ For details, please refer to the comments in each file.
 ## <span style="color:blue"> Test result</span>
 The model used in the test below is `toy_cnn_mini_model_30_1800_5epo_0.97.h5`. Below are two video clips with different lighting conditions. Please note that the implementation of this function is without localization and thus we create a ROI in the center for prediction and we have to place the chess pieces near the center point.  
 
-As you can see in the links below, despite we have strong confidence in training/validation, our classifier still has some problem with class `b_ma`, `b_xiang` and `'b_pao`. These are the ones in black with lower precision. Surprisingly, the classifier does better with red chess pieces than with black ones. We feel the camera change might contribute a bit to this failure ane we will verify this as the following up.
+As you can see in the links below, despite we have strong confidence in training/validation, our classifier still has some problem with class `b_ma`, `b_xiang` and `'b_pao`. These are the ones in black with lower precision. Surprisingly, the classifier does better with red chess pieces than with black ones.
 
 [Video 1 with light condition 1](https://youtu.be/2Fv16iSG5F4) 
 
