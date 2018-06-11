@@ -38,6 +38,7 @@ The model used in the test below is `toy_cnn_mini_model_baseline.h5`. Below are 
 As you can see in the links below, despite we have strong confidence in training/validation, our classifier still has some problem with class `b_ma`, `b_xiang` and `'b_pao`. These are the ones in black with lower precision. Surprisingly, the classifier does better with red chess pieces than with black ones. We feel the camera change might contribute a bit to this failure but due to hardware limitation, we will stick with this camera and figure out if there's other dominating factor.
 
 [Video 1 with light condition 1](https://youtu.be/2Fv16iSG5F4) 
+
 [Video 2 with light condition 2](https://youtu.be/BOO4li_PxPQ)
 
 
