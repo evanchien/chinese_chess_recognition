@@ -95,4 +95,4 @@ model.fit_generator(
     validation_data=validation_generator,
     validation_steps=150,
     use_multiprocessing=True)
-model.save('toy_cnn_mini_model.h5')
+model.save('./h5_file/toy_cnn_mini_model.h5')

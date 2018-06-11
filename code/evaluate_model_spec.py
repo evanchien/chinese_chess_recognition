@@ -15,7 +15,9 @@ pieceTypeList = ['b_jiang','b_ju', 'b_ma', 'b_pao', 'b_shi', 'b_xiang', 'b_zu',
                 'r_bing', 'r_ju', 'r_ma', 'r_pao', 'r_shi', 'r_shuai', 'r_xiang']
 
 def evaluate_toy_cnn_model(model_file = 'toy_cnn_mini_model_30_1800_5epo_0.97.h5'):
-
+    '''
+    this function evaluates our toy CNN model, including output confusion matrix and specifications like precision, recall, etc.
+    '''
     model = keras.models.load_model(model_file)
     model.summary()
 
@@ -38,11 +40,15 @@ def evaluate_toy_cnn_model(model_file = 'toy_cnn_mini_model_30_1800_5epo_0.97.h5
 
 def evalute_toy_cnn_bottleneck(
     wights_file = 'bottleneck_fc_model_weights_30_1800_50epo_0.92.h5'):
-    model = applications.VGG16(include_top=False, weights='imagenet')
+    '''
+    not finished yet
+    '''
+    # model = applications.VGG16(include_top=False, weights='imagenet')
 
-    valid_gen = image.ImageDataGenerator(rescale = rescale_ratio)
-    gen_data_valid = valid_gen.flow_from_directory(VALID_DATASET, shuffle=False, target_size=(IMAGE_SIZE, IMAGE_SIZE), class_mode = 'categorical')
-    prediction = model.predict_generator(gen_data_valid, steps=None, max_queue_size=10, workers=1, use_multiprocessing=True, verbose=0)
+    # valid_gen = image.ImageDataGenerator(rescale = rescale_ratio)
+    # gen_data_valid = valid_gen.flow_from_directory(VALID_DATASET, shuffle=False, target_size=(IMAGE_SIZE, IMAGE_SIZE), class_mode = 'categorical')
+    # prediction = model.predict_generator(gen_data_valid, steps=None, max_queue_size=10, workers=1, use_multiprocessing=True, verbose=0)
+    pass
 
 if __name__ == '__main__':
     evaluate_toy_cnn_model(

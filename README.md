@@ -11,17 +11,17 @@ We chose Keras + TensoeFlow to build up our CNN model. The moddel has 3 layers o
 
 ## <span style="color:blue">Dataset</span>
 
-The Chinese chess has black and red chess pieces holding by two players. Each one has 7 different kind of chess.Thus, there are 14 classes in out dataset.  
+The Chinese chess has black and red chess pieces holding by two players. Each one has 7 different kind of chess.Thus, there are 14 classes in out dataset.
 
-The data classes in order are:  
+The data classes in order are:
 
 <img src="img/b_jiang.png" alt="drawing" width="100px"/><img src="img/b_ju.png" alt="drawing" width="100px"/><img src="img/b_ma.png" alt="drawing" width="100px"/><img src="img/b_pao.png" alt="drawing" width="100px"/><img src="img/b_shi.png" alt="drawing" width="100px"/><img src="img/b_xiang.png" alt="drawing" width="100px"/><img src="img/b_zu.png" alt="drawing" width="100px"/><img src="img/r_ju.png" alt="drawing" width="100px"/><img src="img/r_ma.png" alt="drawing" width="100px"/><img src="img/r_pao.png" alt="drawing" width="100px"/><img src="img/r_shi.png" alt="drawing" width="100px"/><img src="img/r_shuai.png" alt="drawing" width="100px"/><img src="img/r_xiang.png" alt="drawing" width="100px"/>
 
 
-The dataset we use is manually taken by digital camera as in below.  
-<img src="img/setting.JPG" alt="drawing" width="400px"/>  
+The dataset we use is manually taken by digital camera as in below.
+<img src="img/setting.JPG" alt="drawing" width="400px"/>
 
-We took 18 pictures of each chess type as the source of out training and validation data. And, with the help of  `ImageDataGenerator` in `Keras`, we were able to generate a dataset of 14,000 pictures (1000 per class) for training and 2,800 pictures (200 per class) for validation. The augmentation includes rotation, shearing, shift and zoom. You can find the augmented training/verification dataset in the data folder. Below are the snap shots of the augmented images.  
+We took 18 pictures of each chess type as the source of out training and validation data. And, with the help of  `ImageDataGenerator` in `Keras`, we were able to generate a dataset of 14,000 pictures (1000 per class) for training and 2,800 pictures (200 per class) for validation. The augmentation includes rotation, shearing, shift and zoom. You can find the augmented training/verification dataset in the data folder. Below are the snap shots of the augmented images.
 <img src="img/aug_1.png" alt="drawing" width="300px"/>    <img src="img/aug_2.png" alt="drawing" width="300px"/>
 
 As for testing, we decited to capture the frames from camera live feed for prediction.
@@ -35,16 +35,16 @@ For details, please refer to the comments in each file.
 * <span style="text-decoration:underline">vgg16_cnn_bottleneck.py</span>: This is the function we use to tune the bottleneck feature.
 
 ## <span style="color:blue"> Test result</span>
-The model used in the test below is `toy_cnn_mini_model_30_1800_5epo_0.97.h5`. Below are two video clips with different lighting conditions. Please note that the implementation of this function is without localization and thus we create a ROI in the center for prediction and we have to place the chess pieces near the center point.  
+The model used in the test below is `toy_cnn_mini_model_30_1800_5epo_0.97.h5`. Below are two video clips with different lighting conditions. Please note that the implementation of this function is without localization and thus we create a ROI in the center for prediction and we have to place the chess pieces near the center point.
 
 As you can see in the links below, despite we have strong confidence in training/validation, our classifier still has some problem with class `b_ma`, `b_xiang` and `'b_pao`. These are the ones in black with lower precision. Surprisingly, the classifier does better with red chess pieces than with black ones.
 
-[Video 1 with light condition 1](https://youtu.be/2Fv16iSG5F4) 
+[Video 1 with light condition 1](https://youtu.be/2Fv16iSG5F4)
 
 [Video 2 with light condition 2](https://youtu.be/BOO4li_PxPQ)
 
 
-## <span style="color:blue">Analysis</span>  
+## <span style="color:blue">Analysis</span>
 ### <span style="text-decoration:underline">Learning rate</span>
 Learning rate is an important question as if we have the idea of how fast our classifier converges to its target accuracy. It also gives us the idea of how good our classifier is to the task.
 
@@ -60,7 +60,7 @@ First, we evaluate when the accuracy hits 50%.
 * 30 pics/class
     * Hits 50% with 1000 pictures in total
 <img src="graph/30-1000.png" alt="drawing" width="600px"/>
-<br></br>  
+<br></br>
 
 Now, let's evaluate when they reach 90%.
 * 10 pics/class
@@ -82,17 +82,17 @@ And, last, the learning curve of training/validation versus original sample coun
 ### <span style="text-decoration:underline">Confusion matrix</span>
 Another important thing we need to think of is which classes in the dataset our classifier has strong confidence and which doesn't.
 
-Below is the confusion matrix and the classification report of our fine-tuned model. The test dataset is also generated by image augmentation and has 200 samples per class. 
+Below is the confusion matrix and the classification report of our fine-tuned model. The test dataset is also generated by image augmentation and has 200 samples per class.
 
-From left to right and from top to down are in the order of this list:   
-`['b_jiang','b_ju', 'b_ma', 'b_pao', 'b_shi', 'b_xiang', 'b_zu', 'r_bing', 'r_ju', 'r_ma', 'r_pao', 'r_shi', 'r_shuai', 'r_xiang']`  
+From left to right and from top to down are in the order of this list:
+`['b_jiang','b_ju', 'b_ma', 'b_pao', 'b_shi', 'b_xiang', 'b_zu', 'r_bing', 'r_ju', 'r_ma', 'r_pao', 'r_shi', 'r_shuai', 'r_xiang']`
 
 ![matrix](img/confusion_matrix.png)
 <img src="img/classification_report.png" alt="drawing" width="540px"/>
 
 We can see that `r_ju` and `r_xiang` are with lower precision and the red ones (classes starting with r_) have lower precision comparing with the black.
 
-## <span style="color:blue">Future Works</span> 
+## <span style="color:blue">Future Works</span>
 ### <span style="text-decoration:underline">Model Review</span>
 In our tests, we see mis-classifications on some of the black chess pieces and the red ones performs much better. This contridicts the classification report and we will find out whether it is the camera or other factors affecting the accuracy.
 ### <span style="text-decoration:underline">Optimization</span>

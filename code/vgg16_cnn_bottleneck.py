@@ -13,7 +13,7 @@ pieceTypeList = ['b_jiang','b_ju', 'b_ma', 'b_pao', 'b_shi', 'b_xiang', 'b_zu',
 # dimensions of our images.
 img_width, img_height = 56, 56
 
-top_model_weights_path = 'bottleneck_fc_model_weights.h5'
+top_model_weights_path = './h5_file/bottleneck_fc_model_weights.h5'
 train_data_dir = '../data/augmented/train_30_1800'
 validation_data_dir = '../data/augmented/valid_10_300'
 train_data_quantity_per_piece = 1800

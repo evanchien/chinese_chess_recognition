@@ -43,7 +43,7 @@ def predict(model, img, target_size, top_n=3):
 
 if __name__=="__main__":
     # model = loadCNN(), here we select the baseline model for evaluation
-    model = load_model('./toy_cnn_mini_model_baseline.h5')
+    model = load_model('./h5_file/toy_cnn_mini_model_baseline.h5')
 
     piece_type_prediction = 'Not ready'
     cap = cv2.VideoCapture(1)
