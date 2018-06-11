@@ -19,9 +19,9 @@ The data classes in order are:
 
 
 The dataset we use is manually taken by digital camera as in below.  
-<img src="img/Data_collection_setup.JPG" alt="drawing" width="400px"/>  
+<img src="img/setting.JPG" alt="drawing" width="400px"/>  
 
-We took 18 pictures of each chess type as the source of out training and validation data. And, with the help of  `ImageDataGenerator` in `Keras`, we were able to generate a dataset of 14,000 pictures (1000 per class) for training and 2,800 pictures (200 per class) for validation. You can find the training/verification dataset in the data folder.
+We took 18 pictures of each chess type as the source of out training and validation data. And, with the help of  `ImageDataGenerator` in `Keras`, we were able to generate a dataset of 14,000 pictures (1000 per class) for training and 2,800 pictures (200 per class) for validation. The augmentation includes rotation, shearing, shift and zoom. You can find the augmented training/verification dataset in the data folder.
 
 As for testing, we decited to capture the frames from camera live feed for prediction.
 ## <span style="color:blue">Functions</span>
@@ -29,13 +29,14 @@ Dependencies: Keras, Numpy, Python 3, OpenCV, PIL, TensorFlow
 For details, please refer to the comments in each file.
 
 * <span style="text-decoration:underline">toy_cnn_mini.py</span>: The training function. It reads in images with pre-defined size (default:56). After 10 epochs, 400 steps per epoch training, a `.h5` file with model parameters is created and ready for prediction.
-* <span style="text-decoration:underline">predict.py</span>: The batch predict function. It reads in a batch of test images, converts them to the pre-defined size and output the confusion matrix and the classification report.
-* <span style="text-decoration:underline">toy_cnn_mini_test.py</span>: This file reads in a single file for fast classification. 
+* <span style="text-decoration:underline">evaluate_model_spec.py</span>: The performance evaluation function. It reads in a batch of test images, converts them to the pre-defined size and output the confusion matrix and the classification report of the model.
+* <span style="text-decoration:underline">rt_test.py</span>: This is the real time test function that we use for testing.
+* <span style="text-decoration:underline">vgg16_cnn_bottleneck.py</span>: This is the function we use to tune the bottleneck feature.
 
 ## <span style="color:blue"> Test result</span>
-The model used in the test below is `toy_cnn_mini_model_baseline.h5`. Below are two video clips with different lighting conditions. Please note that the implementation of this function is without localization and thus we create a ROI in the center for prediction.  
+The model used in the test below is `toy_cnn_mini_model_30_1800_5epo_0.97.h5`. Below are two video clips with different lighting conditions. Please note that the implementation of this function is without localization and thus we create a ROI in the center for prediction and we have to place the chess pieces near the center point.  
 
-As you can see in the links below, despite we have strong confidence in training/validation, our classifier still has some problem with class `b_ma`, `b_xiang` and `'b_pao`. These are the ones in black with lower precision. Surprisingly, the classifier does better with red chess pieces than with black ones. We feel the camera change might contribute a bit to this failure but due to hardware limitation, we will stick with this camera and figure out if there's other dominating factor.
+As you can see in the links below, despite we have strong confidence in training/validation, our classifier still has some problem with class `b_ma`, `b_xiang` and `'b_pao`. These are the ones in black with lower precision. Surprisingly, the classifier does better with red chess pieces than with black ones. We feel the camera change might contribute a bit to this failure ane we will verify this as the following up.
 
 [Video 1 with light condition 1](https://youtu.be/2Fv16iSG5F4) 
 
@@ -71,7 +72,7 @@ Now, let's evaluate when they reach 90%.
     * Hits 90% with 5000 pictures in total
 <img src="graph/30-5000.png" alt="drawing" width="600px"/>
 
-And, last, the learning curve of training/validation versus original sample counts. In fact, as you can see in the graphs, most of the time the differences between curves is not huge.
+And, last, the learning curve of training/validation versus original sample counts. In fact, as you can see in the graphs, most of the time the differences between curves is not huge. we feel if we have larger number gap we would see the gap more easily.
 <img src="img/training_loss.png" alt="drawing" width="600px"/>
 <img src="img/validation_loss.png" alt="drawing" width="600px"/>
 
@@ -91,8 +92,10 @@ From left to right and from top to down are in the order of this list:
 We can see that `r_ju` and `r_xiang` are with lower precision and the red ones (classes starting with r_) have lower precision comparing with the black.
 
 ## <span style="color:blue">Future Works</span> 
+### <span style="text-decoration:underline">Model Review</span>
+In our tests, we see mis-classifications on some of the black chess pieces and the red ones performs much better. This contridicts the classification report and we will find out whether it is the camera or other factors affecting the accuracy.
 ### <span style="text-decoration:underline">Optimization</span>
-We understand that our model is not stable enough and there are still some mis-judgments found during live test. We are working on tuning with some layer freezed.
+As mentioned in the status update, we are still working on the bottlenecks from pretrained VGG16 CNNarchitecture and will keep updating.
 
 ### <span style="text-decoration:underline">Comparing BoW</span>
 Visual BoW is a technique people usually use to solve tasks like this. A study and a comparison between CNN and BoW on smaller sample is what we will work on in the near future.
