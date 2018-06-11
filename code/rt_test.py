@@ -1,3 +1,7 @@
+'''
+this python script is used to test our classifier in real time setting, wieh OpenCV2 binding, and also you need a webcam to excute it. More info can be found in GitHub Repo.
+'''
+
 import cv2
 import numpy as np
 from PIL import Image
