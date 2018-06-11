@@ -22,7 +22,7 @@ The dataset we use is manually taken by digital camera as in below.
 <img src="img/setting.JPG" alt="drawing" width="400px"/>  
 
 We took 18 pictures of each chess type as the source of out training and validation data. And, with the help of  `ImageDataGenerator` in `Keras`, we were able to generate a dataset of 14,000 pictures (1000 per class) for training and 2,800 pictures (200 per class) for validation. The augmentation includes rotation, shearing, shift and zoom. You can find the augmented training/verification dataset in the data folder. Below are the snap shots of the augmented images.  
-<img src="img/aug_1.png" alt="drawing" width="200px"/>    <img src="img/aug_2.png" alt="drawing" width="200px"/>
+<img src="img/aug_1.png" alt="drawing" width="300px"/>    <img src="img/aug_2.png" alt="drawing" width="300px"/>
 
 As for testing, we decited to capture the frames from camera live feed for prediction.
 ## <span style="color:blue">Functions</span>
