@@ -18,7 +18,7 @@ The data classes in order are:
 <img src="img/b_jiang.png" alt="drawing" width="100px"/><img src="img/b_ju.png" alt="drawing" width="100px"/><img src="img/b_ma.png" alt="drawing" width="100px"/><img src="img/b_pao.png" alt="drawing" width="100px"/><img src="img/b_shi.png" alt="drawing" width="100px"/><img src="img/b_xiang.png" alt="drawing" width="100px"/><img src="img/b_zu.png" alt="drawing" width="100px"/>
 
 ##
-
+<img src="img/r_bing.png" alt="drawing" width="100px"/>
 <img src="img/r_ju.png" alt="drawing" width="100px"/><img src="img/r_ma.png" alt="drawing" width="100px"/><img src="img/r_pao.png" alt="drawing" width="100px"/><img src="img/r_shi.png" alt="drawing" width="100px"/><img src="img/r_shuai.png" alt="drawing" width="100px"/><img src="img/r_xiang.png" alt="drawing" width="100px"/>
 
 
