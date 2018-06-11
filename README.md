@@ -23,7 +23,7 @@ The dataset we use is manually taken by digital camera as in below.
 
 We took 18 pictures of each chess type as the source of out training and validation data. And, with the help of  `ImageDataGenerator` in `Keras`, we were able to generate a dataset of 14,000 pictures (1000 per class) for training and 2,800 pictures (200 per class) for validation. You can find the training/verification dataset in the data folder.
 
-As for testing, we created another dataset that was never be in part of the training/verification process. And, the test data is taken by a different camera.
+As for testing, we decited to capture the frames from camera live feed for prediction.
 ## <span style="color:blue">Functions</span>
 Dependencies: Keras, Numpy, Python 3, OpenCV, PIL, TensorFlow
 For details, please refer to the comments in each file.
@@ -35,7 +35,7 @@ For details, please refer to the comments in each file.
 ## <span style="color:blue"> Test result</span>
 The model used in the test below is `toy_cnn_mini_model_baseline.h5`. Below are two video clips with different lighting conditions. Please note that the implementation of this function is without localization and thus we create a ROI in the center for prediction.  
 
-As you can see in the links below, despite we have strong confidence in training/validation, our classifier still has some problem with class `b_ma`, `b_xiang`, `'b_pao` and `b_shi`.
+As you can see in the links below, despite we have strong confidence in training/validation, our classifier still has some problem with class `b_ma`, `b_xiang` and `'b_pao`. These are the ones in black with lower precision. Surprisingly, the classifier does better with red chess pieces than with black ones.
 
 [Video 1](https://youtu.be/2Fv16iSG5F4) 
 [Video 2](https://youtu.be/BOO4li_PxPQ)
