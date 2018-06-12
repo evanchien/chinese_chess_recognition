@@ -1,4 +1,5 @@
-# Chinese Chess Piece Recognition - EECS 349 Machine Learning Final Project
+# Chinese Chess Piece Recognition - EECS349 Machine Learning Final Project
+> EECS349 Machine Learning at Northwestern University (lectured by Doug Downey)
 
 ### Evan Chien [chihchien2018@u.northwestern.edu](chihchien2018@u.northwestern.edu) | Midoding Dai [m.dai@u.northwestern.edu](m.dai@u.northwestern.edu)
 
@@ -18,7 +19,7 @@ The data classes in order are:
 
 <img src="img/b_jiang.png" alt="drawing" width="100px"/><img src="img/b_ju.png" alt="drawing" width="100px"/><img src="img/b_ma.png" alt="drawing" width="100px"/><img src="img/b_pao.png" alt="drawing" width="100px"/><img src="img/b_shi.png" alt="drawing" width="100px"/><img src="img/b_xiang.png" alt="drawing" width="100px"/><img src="img/b_zu.png" alt="drawing" width="100px"/>
 
-##
+####
 <img src="img/r_bing.png" alt="drawing" width="100px"/><img src="img/r_ju.png" alt="drawing" width="100px"/><img src="img/r_ma.png" alt="drawing" width="100px"/><img src="img/r_pao.png" alt="drawing" width="100px"/><img src="img/r_shi.png" alt="drawing" width="100px"/><img src="img/r_shuai.png" alt="drawing" width="100px"/><img src="img/r_xiang.png" alt="drawing" width="100px"/>
 
 
