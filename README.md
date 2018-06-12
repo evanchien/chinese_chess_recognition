@@ -4,15 +4,20 @@
 #### Evan Chien [chihchien2018@u.northwestern.edu](chihchien2018@u.northwestern.edu) | Midoding Dai [m.dai@u.northwestern.edu](m.dai@u.northwestern.edu)
 
 ---
-## <span style="color:blue">Goal</span>
+## Goal
 
-The goal of our project is to classify Chinese Chess pieces. Given an image of a chess piece (traditional chinese character on top of it), we hope our classifier recognizes the color and the types of chess pieces at a strong confidence level.
+The goal of our project is to classify Chinese Chess pieces. Given an image of a chess piece (traditional chinese character on top of it), we hope our classifier recognizes the color and the types of chess pieces at a strong confidence level. **To summarize, inputs are camera frames of a certain Chinese Chess piece, outputs are the color and the type of the according piece type.**
 
-## <span style="color:blue">Our model</span>
-We chose Keras + TensoeFlow to build up our CNN model. The moddel has 3 layers of 32, 32, 64 feature maps, the input is color image with 56*56 size and the output is the class of the chess in the picture for sure.
+This is an vital part of robot playing Chinese Chess, which is our ultimate goal. To reach our ultimate goal, we also need do some real-time (or in video stream) classification of Chinese Chess pieces, which we will have experiments and according videos in the following pages.
 
-## <span style="color:blue">Dataset</span>
+## Model Selection
 
+As we all know, to solve a image classification problem, CNN is definitely the best choice among ML/DL architectures. We tested several CNN structures, mostly focused on a toy CNN model we built by ourselves and a fine-tuned VGG16 CNN model. **We implemented these models using Keras (with TensoeFlow as backend)**. For the toy CNN model, it contains 3 CONV layers of 32, 32 and 64 feature maps; for the fine-tuned VGG16 CNN model, keep all original bottom CONV and Pooling layers' weights to extract most informative features, and train top FC layers on our own dataset to get a customized top layer classifier.
+
+## Key Results
+We tested those models on a later generated test datase. The toy CNN model has reached a 95% test accuracy, while the fine-tuned VGG16 CNN model reached an accuracy of 92%, which is pretty nice result. Suprisingly, our shallow layer toy CNN model performed better than fine-tuned VGG16 CNN model. We also tested model performance under a real-time camera setting, results can be found in the following pages.
+
+## Dataset
 The Chinese chess has black and red chess pieces holding by two players. Each one has 7 different kind of chess.Thus, there are 14 classes in out dataset.
 
 The data classes in order are:
@@ -27,7 +32,8 @@ The dataset we use is manually taken by digital camera as in below.
 ####
 <img src="img/setting.JPG" alt="drawing" width="400px"/>
 
-We took 18 pictures of each chess type as the source of out training and validation data. And, with the help of  `ImageDataGenerator` in `Keras`, we were able to generate a dataset of 14,000 pictures (1000 per class) for training and 2,800 pictures (200 per class) for validation. The augmentation includes rotation, shearing, shift and zoom. You can find the augmented training/verification dataset in the data folder. Below are the snap shots of the augmented images.
+We took 18 pictures of each chess type as the source of out training and validation data. And, with the help of  `ImageDataGenerator` in `Keras`, we were able to generate a dataset of 14,000 pictures (1000 per class) for training and 2,800 pictures (200 per class) for validation. The augmentation includes rotation, shearing, shift and zoom. You can find the augmented training/verification dataset in the data folder. Below are the snap shots of the augmented images, where you can get some intuitive ideas about what does augmented data look like and whether they make sense. They looks like real images taken from different camera settings, which make full sense and hopefully will serve as real images to train our CNN model.
+
 <img src="img/aug_1.png" alt="drawing" width="300px"/>    <img src="img/aug_2.png" alt="drawing" width="300px"/>
 
 As for testing, we decited to capture the frames from camera live feed for prediction.
