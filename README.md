@@ -37,14 +37,15 @@ We took 18 pictures of each chess type as the source of out training and validat
 <img src="img/aug_1.png" alt="drawing" width="300px"/>    <img src="img/aug_2.png" alt="drawing" width="300px"/>
 
 As for testing, we decited to capture the frames from camera live feed for prediction.
-## <span style="color:blue">Functions</span>
-Dependencies: Keras, Numpy, Python 3, OpenCV, PIL, TensorFlow
+## <span style="color:blue">Implementations</span>
+Dependencies: Python3, Numpy, Keras, Scikit-learn, OpenCV, PIL, TensorFlow
 For details, please refer to the comments in each file.
 
-* <span style="text-decoration:underline">toy_cnn_mini.py</span>: The training function. It reads in images with pre-defined size (default:56). After 10 epochs, 400 steps per epoch training, a `.h5` file with model parameters is created and ready for prediction.
-* <span style="text-decoration:underline">evaluate_model_spec.py</span>: The performance evaluation function. It reads in a batch of test images, converts them to the pre-defined size and output the confusion matrix and the classification report of the model.
-* <span style="text-decoration:underline">rt_test.py</span>: This is the real time test function that we use for testing.
-* <span style="text-decoration:underline">vgg16_cnn_bottleneck.py</span>: This is the function we use to tune the bottleneck feature.
+* [dataAugment.py](./code/dataAugment.py): It is a help function which can automatically generate an augmented dataset with specific requirements, organize all data in the way compatible with other scripts. It can be used to generate augmented dataset, and for further analysis about influential factors of dataset.
+* [toy_cnn_mini.py](./code/toy_cnn_mini.py): The training function. It reads in images with pre-defined size (default:56). After 10 epochs, 400 steps per epoch training, a `.h5` file with model parameters is created and ready for prediction.
+* [evaluate_model_spec.py](./code/evaluate_model_spec.py): The performance evaluation function. It reads in a batch of test images, converts them to the pre-defined size and output the confusion matrix and the classification report of the model.
+* [rt_test.py](./code/rt_test.py): This is the real time test function that we use for testing.
+* [vgg16_cnn_bottleneck.py](./code/vgg16_cnn_bottleneck.py): This is the function we use to tune the bottleneck feature.
 
 ## <span style="color:blue"> Test result</span>
 The model used in the test below is `toy_cnn_mini_model_30_1800_5epo_0.97.h5`. Below are two video clips with different lighting conditions. Please note that the implementation of this function is without localization and thus we create a ROI in the center for prediction and we have to place the chess pieces near the center point.
