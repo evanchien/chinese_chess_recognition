@@ -1,7 +1,7 @@
-# Chinese Chess Piece Recognition - EECS349 Machine Learning Final Project
+# Chinese Chess Piece Recognition
 > EECS349 Machine Learning at Northwestern University (lectured by Doug Downey)
 
-### Evan Chien [chihchien2018@u.northwestern.edu](chihchien2018@u.northwestern.edu) | Midoding Dai [m.dai@u.northwestern.edu](m.dai@u.northwestern.edu)
+#### Evan Chien [chihchien2018@u.northwestern.edu](chihchien2018@u.northwestern.edu) | Midoding Dai [m.dai@u.northwestern.edu](m.dai@u.northwestern.edu)
 
 ---
 ## <span style="color:blue">Goal</span>
