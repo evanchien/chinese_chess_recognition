@@ -110,8 +110,13 @@ We can see that `r_ju` and `r_xiang` are with lower precision and the red ones (
 ### <span style="text-decoration:underline">Influential factors</span>
 In our real time setting tests (using webcam to classify chinese chess pieces, see this photo for example), we see more frequent mis-classifications on some of the black chess (mostly with complicated Chinese characters) pieces, while predictions of the red ones perform much better. This contridicts the classification report we generated and we need do more exploration and experiments to find out whether it is the camera or other factors affecting the accuracy.
 
-### <span style="text-decoration:underline">Optimization</span>
+### <span style="text-decoration:underline">Fine Tuning</span>
 As mentioned in the status update, we are still working on fine-tuning the pretrained weights of VGG16 CNN model (not only top FC layers we discussed above, but also several top CONV layers). For now, it works but it is not good as the two we discussed. We will keep on playing with it and see if we can get it better.
 
 ### <span style="text-decoration:underline">Comparing BoW</span>
 Visual BoW is a way to represent images. Based on that, we can train classifiers (multi-layer perceptron, SVM, etc) on those vector-presented images. This is a super powerful way to build image classifier without using CNN. Choosing the right representation model and good classifier is just another big task, so I leave it for now and will finish that in the near future.
+
+## Responsibility
+Evan Chien: generate dataset; implement analysis scripts; analyze results;
+Miaoding Dai: build CNN models (including train and validation scripts); model selection; implement dataset augmentation scripts
+
