@@ -15,7 +15,7 @@ This is an vital part of robot playing Chinese Chess, which is our ultimate goal
 As we all know, to solve a image classification problem, CNN is definitely the best choice among ML/DL architectures. We tested several CNN structures, mostly focused on a toy CNN model we built by ourselves and a fine-tuned VGG16 CNN model. **We implemented these models using Keras (with TensoeFlow as backend)**. For the toy CNN model, it contains 3 CONV layers of 32, 32 and 64 feature maps; for the fine-tuned VGG16 CNN model, keep all original bottom CONV and Pooling layers' weights to extract most informative features, and train top FC layers on our own dataset to get a customized top layer classifier.
 
 ## Key Results
-We tested those models on a later generated test datase. The toy CNN model has reached a 95% test accuracy, while the fine-tuned VGG16 CNN model reached an accuracy of 92%, which is pretty nice result. Suprisingly, our shallow layer toy CNN model performed better than fine-tuned VGG16 CNN model. We also tested model performance under a real-time camera setting, results can be found in the following pages.
+We tested those models on a later generated test datase. The toy CNN model has reached a 95% test accuracy, while the fine-tuned VGG16 CNN model reached an accuracy of 92%, which is pretty nice result. Suprisingly, our shallow layer toy CNN model performed better than fine-tuned VGG16 CNN model. As with a higher accuracy, we will use our toy CNN model to do further analysis including learning curve and confusion matrix. We also tested model performance under a real-time camera setting, results can be found in the following pages.
 
 ## Dataset
 The Chinese chess has black and red chess pieces holding by two players. Each one has 7 different kind of chess.Thus, there are 14 classes in out dataset.
@@ -106,10 +106,12 @@ From left to right and from top to down are in the order of this list:
 We can see that `r_ju` and `r_xiang` are with lower precision and the red ones (classes starting with r_) have lower precision comparing with the black.
 
 ## <span style="color:blue">Future Works</span>
+
 ### <span style="text-decoration:underline">Influential factors</span>
-In our tests, we see mis-classifications on some of the black chess pieces and the red ones performs much better. This contradicts the classification report and we will find out whether it is the camera or other factors affecting the accuracy.
+In our real time setting tests (using webcam to classify chinese chess pieces, see this photo for example), we see more frequent mis-classifications on some of the black chess (mostly with complicated Chinese characters) pieces, while predictions of the red ones perform much better. This contridicts the classification report we generated and we need do more exploration and experiments to find out whether it is the camera or other factors affecting the accuracy.
+
 ### <span style="text-decoration:underline">Optimization</span>
-As mentioned in the status update, we are still working on the bottlenecks from pretrained VGG16 CNNarchitecture and will keep updating.
+As mentioned in the status update, we are still working on fine-tuning the pretrained weights of VGG16 CNN model (not only top FC layers we discussed above, but also several top CONV layers). For now, it works but it is not good as the two we discussed. We will keep on playing with it and see if we can get it better.
 
 ### <span style="text-decoration:underline">Comparing BoW</span>
-Visual BoW is a technique people usually use to solve tasks like this. A study and a comparison between CNN and BoW on smaller sample is what we will work on in the near future.
+Visual BoW is a way to represent images. Based on that, we can train classifiers (multi-layer perceptron, SVM, etc) on those vector-presented images. This is a super powerful way to build image classifier without using CNN. Choosing the right representation model and good classifier is just another big task, so I leave it for now and will finish that in the near future.
